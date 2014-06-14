@@ -1,41 +1,49 @@
-# Rough usage....
+# CLOUDSTACK-6114
+
+## Introduction
+
+The follow project aims to simplify getting a full Apache Cloudstack environment running on your machine. This may be done for development or testing purposes.
+
+The included VagrantFile will give you:
+
+ - Management
+     - NFS Server
+     - MySQL Server
+     - Router
+
+ - XenServer 6.2
 
 ## Getting started
 
-- Install `ruby` and `git`
-- Download and install [Vagrant](https://www.vagrantup.com/downloads.html)
-- Install Vagrant plugins:
-```
-vagrant plugin install vagrant-omnibus
-vagrant plugin install vagrant-librarian-chef
-```
+1. Ensure your system has `git` installed.
 
-## Setting up repository
+1. Clone the repository:
 
-- Clone this repository:
-```
+```bash
 git clone https://github.com/imduffy15/GSoC-2014.git
 ```
-- Initialize or Update submodules as needed: (for updates lose the --init)
-```
-git submodule update --init packer-xenserver
-git submodule update --init cookbook_nat-router
-git submodule update --init cookbook_cloudstack
-git submodule update --init cloudstack
+
+1. Download and Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
+1. Download and install [Vagrant](https://www.vagrantup.com/downloads.html)
+
+1. Ensure all Vagrant Plugins are installed:
+
+```bash
+cd /path/to/cloned/repo
+sh scripts/vagrant_prep.sh
 ```
 
-## Start MySQL, NFS, Gateway and Xenserver Boxes
+1. Start MySQL, NFS, Gateway and Xenserver Boxes
 
-From the root directory of this repo:
+
 ```
-cd MySql_NFS_XenServer
+cd /path/to/cloned/repo/vagrant
 vagrant up
 ```
 
-## Common Issues around Vagrant
+## Common Issues
 
-- Unknown configuration section: There is probably a missing vagrant plugin. Check
-  and install plugins listed in the 'Getting Started' section.
 - 'Cannot forward the specified ports on this VM': There could be MySQL or some other
   service running on the host OS causing vagrant to fail setting up local port forwarding.
 
