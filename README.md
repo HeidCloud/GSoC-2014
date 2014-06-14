@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The follow project aims to simplify getting a full Apache Cloudstack environment running on your machine. This may be done for development or testing purposes.
+The follow project aims to simplify getting a full Apache Cloudstack environment running on your machine.
 
 The included VagrantFile will give you:
 
@@ -19,76 +19,90 @@ The included VagrantFile will give you:
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/imduffy15/GSoC-2014.git
-```
+	```bash
+	git clone https://github.com/imduffy15/GSoC-2014.git
+	```
 
 1. Download and Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-
+ 
 1. Download and install [Vagrant](https://www.vagrantup.com/downloads.html)
 
 1. Ensure all Vagrant Plugins are installed:
 
+	```bash
+	cd /path/to/cloned/repo
+	sh scripts/vagrant_prep.sh
+	```
+
+### Start the vagrant boxes
+
+
 ```bash
-cd /path/to/cloned/repo
-sh scripts/vagrant_prep.sh
-```
-
-1. Start MySQL, NFS, Gateway and Xenserver Boxes
-
-
-```
-cd /path/to/cloned/repo/vagrant
+cd /path/to/GSoC-2014/repo/vagrant
 vagrant up
 ```
 
-## Common Issues
+*** Common issues: ***
 
 - 'Cannot forward the specified ports on this VM': There could be MySQL or some other
   service running on the host OS causing vagrant to fail setting up local port forwarding.
 
-## Cloudstack
 
-### Compiling
+### Start Cloudstack
 
-From the root directory of this repo:
+1. Clone the Cloudstack Repository:
 
-```
-cd cloudstack
-wget http://download.cloud.com.s3.amazonaws.com/tools/vhd-util -P scripts/vm/hypervisor/xenserver/
-chmod +x scripts/vm/hypervisor/xenserver/vhd-util
-mvn -P developer,systemvm clean install -DskipTests=true
-```
+	```
+	git clone https://github.com/apache/cloudstack.git
+	```
 
-### Starting
+*** Note: ***
 
-From the `cloudstack` directory of this repo:
-
-#### Deploy Database
+Personally I prefer to use the 4.3 codebase rather than master. If you wish to do the same:	
 
 ```
-mvn -P developer -pl developer,tools/devcloud -Ddeploydb
+git reset --hard 0810029
 ```
 
-#### Starting Cloudstack
+1. Download vhd-util:
 
-```
-mvn -pl :cloud-client-ui jetty:run
-```
+	```bash
+	cd /path/to/cloudstack/repo
+	wget http://download.cloud.com.s3.amazonaws.com/tools/vhd-util -P scripts/vm/hypervisor/xenserver/
+	chmod +x scripts/vm/hypervisor/xenserver/vhd-util
+	```
 
-### Deploying
+1. Compile Cloudstack:
 
-From the `cloudstack` directory of this repo:
+	```bash
+	cd /path/to/cloudstack/repo
+	mvn -P developer,systemvm clean install -DskipTests=true
+	```
+	
+1. Deploy Cloudstack Database:
 
-### Install Marvin
+	```bash
+	cd /path/to/cloudstack/repo
+	mvn -P developer -pl developer,tools/devcloud -Ddeploydb
+	```
 
-```
-pip install tools/marvin/dist/Marvin-0.1.0.tar.gz
-```
+1. Start Cloudstack:
 
-#### Deploy devcloud.cfg
+	```bash
+	cd /path/to/cloudstack/repo
+	mvn -pl :cloud-client-ui jetty:run
+	```
 
-```
-python tools/marvin/marvin/deployDataCenter.py -i ../devcloud.cfg 
-```
+1. Install Marvin:
+
+	```
+	cd /path/to/cloudstack/repo
+	pip install tools/marvin/dist/Marvin-0.1.0.tar.gz
+	```
+
+1. Deploy devcloud.cfg
+
+	```
+	python /path/to/cloudstack/repo/tools/marvin/marvin/deployDataCenter.py -i /path/to/GSoC-2014/repo/configurations/devcloud.cfg 
+	```
 
