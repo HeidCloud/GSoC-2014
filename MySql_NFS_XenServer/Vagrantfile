@@ -15,6 +15,15 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
+  config.vm.define "xenserver" do |xenserver|
+    xenserver.vm.box = "duffy/xenserver"
+
+    xenserver.vm.provision "shell" do |s|
+      s.path = "xenserver/reset-network.sh"
+      s.args = ["eth1", "192.168.56.10", "255.255.255.0"]
+    end
+  end
+
   config.vm.define "management" do |management|
     management.vm.box = "chef/centos-6.5"
 
@@ -49,7 +58,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       #             {
       #                 "id" => 1,
       #                 "hypervisor" => "xenserver",
-      #                 "url" => "http://10.0.2.2:8000/systemvmtemplate-xen.vhd.bz2"
+      #                 "url" => "http://10.0.2.2:8000/systemvmtemplate-xen.vhd.bz2",
+      #                 "name" => "routing-1"
+      #             },
+      #             {
+      #                 "id" => 5,
+      #                 "hypervisor" => "xenserver",
+      #                 "url" => "http://10.0.2.2:8000/ttylinux_pv.vhd",
+      #                 "name" => "tiny Linux"
       #             }
       #         ],
       #         "storage" => {
@@ -61,14 +77,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     end
   end
-
-  config.vm.define "xenserver" do |xenserver|
-    xenserver.vm.box = "duffy/xenserver"
-
-    xenserver.vm.provision "shell" do |s|
-      s.path = "xenserver/reset-network.sh"
-      s.args = ["eth1", "192.168.56.10", "255.255.255.0"]
-    end
-  end
-
 end
