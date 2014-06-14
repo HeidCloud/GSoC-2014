@@ -31,7 +31,7 @@ The included VagrantFile will give you:
 
 	```bash
 	cd /path/to/cloned/repo
-	sh scripts/vagrant_prep.sh
+	sh scripts/vagrant_prep.sh vbox
 	```
 
 ### Start the vagrant boxes
