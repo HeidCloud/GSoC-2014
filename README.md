@@ -103,6 +103,6 @@ git reset --hard 0810029
 1. Deploy devcloud.cfg
 
 	```
-	python /path/to/cloudstack/repo/tools/marvin/marvin/deployDataCenter.py -i /path/to/GSoC-2014/repo/configurations/devcloud.cfg 
+	python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/configurations/devcloud.cfg 
 	```
 
