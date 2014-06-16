@@ -33,6 +33,28 @@ The included VagrantFile will give you:
 	cd /path/to/cloned/repo
 	bash scripts/vagrant_prep.sh vbox
 	```
+### Configure virtualbox
+
+1. Open virtualbox and navigate to its preferences/settings window. 
+
+1. Click onto the network tab and then onto the host only network tab. 
+
+1. Ensure one adapter is present, vboxnet0 select it and press the little screw driver image.
+
+1. Ensure your settings match the below screenshots:
+
+    - IPv4 IP address of 192.168.56.1
+    - Subnet of 255.255.255.0
+    - DHCP server disabled
+    
+![Host only network](https://gist.githubusercontent.com/imduffy15/34d5b2fb6bb0d68d48c0/raw/Screen%20Shot%202014-06-16%20at%2019.23.04.png)
+
+
+![Host only network configuration ip IP](https://gist.github.com/imduffy15/34d5b2fb6bb0d68d48c0/raw/09e14e7e6b6c5918c0bb267f4fc925e04dbe44f4/Screen%20Shot%202014-06-16%20at%2019.22.58.png)
+
+
+![Host only network configuration dhcp](https://gist.github.com/imduffy15/34d5b2fb6bb0d68d48c0/raw/66f5be5429638a3544f2a48719685e0f415b2322/Screen%20Shot%202014-06-16%20at%2019.23.00.png)
+
 
 ### Start the vagrant boxes
 
