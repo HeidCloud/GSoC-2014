@@ -37,16 +37,16 @@ The included VagrantFile will give you:
 ### Start the vagrant boxes
 
 
-	```bash
-	cd /path/to/GSoC-2014/repo/vagrant
-	vagrant up
-	```
-	
-	*** Common issues: ***
-	
-	- 'Cannot forward the specified ports on this VM': There could be MySQL or some other
-	  service running on the host OS causing vagrant to fail setting up local port forwarding.
-	
+```bash
+cd /path/to/GSoC-2014/repo/vagrant
+vagrant up
+```
+
+*** Common issues: ***
+
+- 'Cannot forward the specified ports on this VM': There could be MySQL or some other
+  service running on the host OS causing vagrant to fail setting up local port forwarding.
+
 
 ### Start Cloudstack
 
