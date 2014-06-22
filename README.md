@@ -59,8 +59,17 @@ The included VagrantFile will give you:
 ### Start the vagrant boxes
 
 
+#### Cloudstack With Basic Networking:
+
 ```bash
-cd /path/to/GSoC-2014/repo/vagrant
+cd /path/to/GSoC-2014/repo/basic
+vagrant up
+```
+
+#### Cloudstack With Advanced Networking:
+
+```bash
+cd /path/to/GSoC-2014/repo/advanced
 vagrant up
 ```
 
@@ -122,9 +131,23 @@ vagrant up
 	pip install tools/marvin/dist/Marvin-0.1.0.tar.gz
 	```
 
-1. Deploy devcloud.cfg
+1. Deploy basic.cfg
+
+    
+    ##### FOR BASIC NETWORKING ONLY.
 
 	```
-	python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/configurations/devcloud.cfg 
+	python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/basic/basic.json 
 	```
+	
+	OR
+	
+1. Deploy advanced.cfg
+
+    #### FOR ADVANCED NETWORKING ONLY
+    
+	```
+	python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/advanced/advanced.json 
+	```
+
 
