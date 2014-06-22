@@ -39,11 +39,24 @@ The included VagrantFile will give you:
 
 1. Click onto the network tab and then onto the host only network tab. 
 
-1. Ensure one adapter is present, vboxnet0 select it and press the little screw driver image.
+1. Configure your adapters as follows:
 
-1. Ensure your settings match the below screenshots:
+    #### For Basic Networking you only need:
 
+    - vboxnet0
     - IPv4 IP address of 192.168.56.1
+    - Subnet of 255.255.255.0
+    - DHCP server disabled
+    
+    #### For Advanced Networking you will need:
+    
+    - vboxnet1
+    - IPv4 IP address of 192.168.57.1
+    - Subnet of 255.255.255.0
+    - DHCP server disabled
+    
+    - vboxnet2
+    - IPv4 IP address of 192.168.58.1
     - Subnet of 255.255.255.0
     - DHCP server disabled
     
@@ -137,7 +150,7 @@ vagrant up
 python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/basic/basic.json 
 ```
 
-#### FOR ADVANCED NETWORKING ONLY
+#### FOR ADVANCED NETWORKING ONLY.
 
 ```
 python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/advanced/advanced.json 
