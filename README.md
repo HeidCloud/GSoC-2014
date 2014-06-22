@@ -43,7 +43,7 @@ The included VagrantFile will give you:
 
     #### For Basic Networking you only need:
 
-    - vboxnet0
+    ##### vboxnet0
     - IPv4 IP address of 192.168.56.1
     - Subnet of 255.255.255.0
     - DHCP server disabled
