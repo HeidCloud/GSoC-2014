@@ -131,23 +131,16 @@ vagrant up
 	pip install tools/marvin/dist/Marvin-0.1.0.tar.gz
 	```
 
-1. Deploy basic.cfg
+##### FOR BASIC NETWORKING ONLY.
 
-    
-    ##### FOR BASIC NETWORKING ONLY.
+```
+python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/basic/basic.json 
+```
 
-	```
-	python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/basic/basic.json 
-	```
-	
-	OR
-	
-1. Deploy advanced.cfg
+#### FOR ADVANCED NETWORKING ONLY
 
-    #### FOR ADVANCED NETWORKING ONLY
-    
-	```
-	python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/advanced/advanced.json 
-	```
+```
+python -m marvin.deployDataCenter -i /path/to/GSoC-2014/repo/advanced/advanced.json 
+```
 
 
