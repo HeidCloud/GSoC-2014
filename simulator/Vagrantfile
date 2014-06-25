@@ -39,11 +39,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ]
 
       chef.json = {
-        "cloudstack" => {
-          "development" => {
-            "branch": "4.4-forward"
-            "simulator": => {
-              type = "advanced"
+        'cloudstack' => {
+          'development' => {
+            'branch': '4.4-forward'
+            'simulator' => {
+              'type': 'advanced'
             }
           }
         }
