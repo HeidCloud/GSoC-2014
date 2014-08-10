@@ -18,6 +18,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define 'xenserver' do |xenserver|
     xenserver.vm.box = 'duffy/xenserver'
 
+    ## Map host only networks and the adapters
+    xenserver.vm.provider 'virtualbox' do |v|
+      v.customize ['modifyvm', :id, '--nicpromisc2', 'allow-all']
+      v.customize ["modifyvm", :id, '--nictype2', 'Am79C973']
+    end
+
     # Configure Interface
     ## Configure Management Interface
     xenserver.vm.provision 'shell' do |s|
@@ -36,6 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     management.vm.provider 'virtualbox' do |v|
       v.customize ['modifyvm', :id, '--memory', 512]
+      v.customize ["modifyvm", :id, '--nictype2', 'Am79C973']
     end
 
     management.omnibus.chef_version = :latest
@@ -54,22 +61,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.run_list = [
           'recipe[cloudstack::default]'
       ]
-
-      # chef.json = {
-      #     'cloudstack' => {
-      #         'systemvms' => [
-      #             {
-      #                 'id' => 1,
-      #                 'hypervisor' => 'xenserver',
-      #                 'url' => 'http://10.0.2.2:8000/systemvmtemplate-xen.vhd.bz2',
-      #                 'name' => 'routing-1'
-      #             },
-      #         ],
-      #         'storage' => {
-      #             'temporary' => '/tmp/vagrant-cache/cloudstack'
-      #         }
-      #     }
-      # }
     end
   end
 end
